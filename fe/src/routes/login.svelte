@@ -4,12 +4,15 @@
 
   if (process.browser) {
 
+    if (process.env.NODE_ENV == "developement") {
+      return
+    }
+
       try {
         const res = await this.fetch('/pfsgui/_auth')
         const auth = await res.json()
         if (auth.logged_in) {
-          console.log('redirection to /')
-        this.redirect(302, '/')
+          this.redirect(302, '/')
         }
       }
     catch {

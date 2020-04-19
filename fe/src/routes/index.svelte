@@ -2,18 +2,18 @@
     export async function preload(page, session){
 
   if (process.browser) {
+
+    if (process.env.NODE_ENV == "development") {
+      return
+    }
       try {
-        console.log('try')
       const res = await this.fetch('/pfsgui/_auth')
       const auth = await res.json()
-        console.log('fail')
       if (!auth.logged_in) {
-          console.log('redirection to /login')
         this.redirect(302, '/pfsgui/login')
       }
       }
       catch {
-          console.log('redirection to /login')
         this.redirect(302, '/pfsgui/login')
       }
 
