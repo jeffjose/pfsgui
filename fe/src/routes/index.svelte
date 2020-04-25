@@ -38,4 +38,4 @@
 <p>--------</p>
 {JSON.stringify(payload.interfaces.all_interfaces.igb0)}
 {JSON.stringify(payload.interfaces.all_interfaces.igb1)}
-<h1>Design</h1>
+<h1 class="text-6xl text-gray-900">Design</h1>
