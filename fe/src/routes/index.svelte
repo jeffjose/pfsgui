@@ -26,7 +26,16 @@
 </script>
 
 <script>
-  export let payload;
+  export let payload = {
+    interfaces: { active_interfaces: {}, all_interfaces: {} }
+  };
 </script>
 
-{JSON.stringify(payload)}
+<p>--------</p>
+{JSON.stringify(payload.interfaces.active_interfaces)}
+<p>--------</p>
+{JSON.stringify(payload.interfaces.all_interfaces)}
+<p>--------</p>
+{JSON.stringify(payload.interfaces.all_interfaces.igb0)}
+{JSON.stringify(payload.interfaces.all_interfaces.igb1)}
+<h1>Design</h1>
