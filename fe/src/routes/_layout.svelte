@@ -1,22 +1,29 @@
 <script>
-  import Nav from "../components/Nav.svelte";
+  import SideBar from "../components/SideBar.svelte";
+  import TopBar from "../components/TopBar.svelte";
 
   export let segment;
 </script>
 
 <style>
-  main {
-    position: relative;
-    max-width: 56em;
-    background-color: white;
-    padding: 2em;
-    margin: 0 auto;
-    box-sizing: border-box;
+  .wrapper {
+    display: grid;
+    grid-template-columns: 7rem [content] 1fr;
+    grid-template-rows: [content] 1fr;
+    height: 100vh;
+  }
+
+  .content {
+    grid-column: content;
   }
 </style>
 
-<Nav {segment} />
-
-<main>
-  <slot />
-</main>
+<div class="wrapper">
+  <SideBar {segment} />
+  <div class="content">
+    <TopBar {segment} />
+    <main class="">
+      <slot />
+    </main>
+  </div>
+</div>

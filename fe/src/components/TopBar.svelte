@@ -6,8 +6,8 @@
 
 </style>
 
-<nav>
-  <ul>
+<nav class="h-10 border-b border-gray-300 w-full">
+  <ul class="flex ">
     <li>
       <a aria-current={segment === undefined ? 'page' : undefined} href=".">
         home
