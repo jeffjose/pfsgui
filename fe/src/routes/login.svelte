@@ -1,26 +1,19 @@
 <script context="module">
-
-    export async function preload(page, session){
-
-  if (process.browser) {
-
-    if (process.env.NODE_ENV == "developement") {
-      return
-    }
+  export async function preload(page, session) {
+    if (process.browser) {
+      if (process.env.NODE_ENV == "developement") {
+        return;
+      }
 
       try {
-        const res = await this.fetch('/pfsgui/_auth')
-        const auth = await res.json()
+        const res = await this.fetch("/pfsgui/_auth");
+        const auth = await res.json();
         if (auth.logged_in) {
-          this.redirect(302, '/')
+          this.redirect(302, "/");
         }
-      }
-    catch {
+      } catch {}
     }
-
-
-    }
-
   }
 </script>
-<h1> You must login </h1>
+
+<h1>You must login</h1>

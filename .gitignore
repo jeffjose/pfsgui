@@ -1,0 +1,6 @@
+_credentials.json
+
+.DS_Store
+node_modules
+yarn-error.log
+__sapper__
