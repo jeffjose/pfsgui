@@ -70,7 +70,65 @@ function format(config, interfaces) {
 }
 
 function _format_interfaces(active_interfaces, all_interfaces) {
-  return { active_interfaces, all_interfaces };
+  // Physical interfaces
+  let physical = _.keys(all_interfaces);
+
+  // All active interfaces
+  let active = _.uniq(
+    _.concat(_.map(_.values(active_interfaces), (x) => x.if))
+  );
+
+  // Now find which ones are not physical
+  let notphysical = _.difference(active, physical);
+
+  let to_display = _.map(
+    _.sortBy(_.uniq(_.concat(physical, active)), (x) => x),
+    function (x) {
+      return { name: x };
+    }
+  );
+
+  let parents = [];
+  for (let x of to_display) {
+    if (_.includes(notphysical, x.name)) {
+      x.type = "notphysical";
+      let matchingphysical = _.find(physical, function (p) {
+        // Find igbX from igbX.YY
+        return x.name.split(".")[0] == p;
+      });
+      x.parent = matchingphysical;
+      // Setting an empty object here so that FE doesnt complain
+      x.physicaldetails = {};
+      x.vlanid = x.name.split(".")[1];
+
+      parents.push(matchingphysical);
+    } else {
+      x.type = "physical";
+      x.physicaldetails = all_interfaces[x.name];
+    }
+
+    for (let [origname, name] of _.entries(
+      _.mapValues(active_interfaces, "if")
+    )) {
+      if (name == x.name) {
+        x.details = active_interfaces[origname];
+        x.details.original_name = origname;
+      }
+    }
+  }
+
+  // Loop one more time and tag parent ifaces
+  for (let x of to_display) {
+    x.is_parent = _.includes(parents, x.name);
+  }
+
+  console.log(to_display);
+
+  return {
+    active: active_interfaces,
+    all: all_interfaces,
+    display: to_display,
+  };
 }
 
 // Public interfaces

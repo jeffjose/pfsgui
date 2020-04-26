@@ -9,9 +9,9 @@
 <nav
   class="shadow z-10 bg-app-secondary text-white flex flex-col px-2 items-center
   justify-start">
-  <div>
+  <div class="mt-5 mb-3">
     <svg
-      class="w-20 mt-3 text-app-text hover:text-app-texthover fill-current
+      class="w-20 text-app-text hover:text-app-texthover fill-current
       cursor-pointer"
       aria-labelledby="pfsense-logo"
       viewBox="0 0 282.8 84.2">
@@ -76,15 +76,17 @@
     </svg>
   </div>
 
+  <div class="my-3 bg-app-secondaryhover rounded w-full h-12" />
+
   <div
-    class="mt-3 py-2 rounded w-full text-center text-app-text text-sm
-    cursor-pointer hover:bg-app-secondaryhover hover:text-app-texthover">
+    class="py-2 rounded w-full text-center text-app-text text-sm cursor-pointer
+    hover:bg-app-secondaryhover hover:text-app-texthover">
     Overview
   </div>
   <div
     class="py-2 w-full rounded text-center text-app-text text-sm cursor-pointer
     hover:bg-app-secondaryhover hover:text-app-texthover">
-    Settings
+    System Info
   </div>
   <div
     class="py-2 w-full rounded text-center text-app-text text-sm cursor-pointer
