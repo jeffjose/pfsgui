@@ -43,11 +43,16 @@
         class="relative flex items-center flex-col mr-4 {iface.parent ? '-mx-4' : '-mx-3'}
         mt-6 px-4 py-2 rounded hover:bg-accent-gray cursor-pointer">
         {#if iface.is_parent || iface.parent}
-          <div class="absolute top-0 w-full border-b-2 border-gray-600" />
+          <span
+            class="absolute top-0 w-full inline-block text-right text-tiny
+            uppercase border-b-2 {iface.parent ? 'h-5 px-1 py-1' : 'h-0'}
+            bg-gray-600 border-gray-600">
+            {iface.parent ? 'vlan' : ''}
+          </span>
         {/if}
 
         <div
-          class="text-xs mt-4 {(iface.type == 'physical' && iface.physicaldetails.friendly) || iface.type == 'notphysical' ? 'font-semibold text-gray-200 uppercase' : 'text-gray-700'}">
+          class="text-xs mt-8 {(iface.type == 'physical' && iface.physicaldetails.friendly) || iface.type == 'notphysical' ? 'font-semibold text-gray-200 uppercase' : 'text-gray-700'}">
           {(iface.type == 'physical' && iface.physicaldetails.friendly) || iface.type == 'notphysical' ? iface.details.descr : 'Unassigned'}
         </div>
         <div
@@ -77,7 +82,7 @@
             {iface.physicaldetails.ipaddr ? iface.physicaldetails.ipaddr : '-'}
           {:else}{iface.details.ipaddr ? iface.details.ipaddr : '-'}{/if}
         </div>
-        <div class=" uppercase text-tiny text-gray-600">
+        <div class=" uppercase mt-1 text-tiny text-gray-600">
           {iface.type == 'physical' ? iface.physicaldetails.mac : '-'}
         </div>
       </div>
