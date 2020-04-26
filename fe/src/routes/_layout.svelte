@@ -15,6 +15,7 @@
 
   .content {
     grid-column: content;
+    overflow: hidden;
   }
 </style>
 

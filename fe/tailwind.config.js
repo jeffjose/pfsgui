@@ -37,6 +37,10 @@ module.exports = {
           texthover: "#dcddde",
           textactive: "#fff",
         },
+        accent: {
+          green: "#49c249",
+          gray: "#171717",
+        },
       },
     },
   },

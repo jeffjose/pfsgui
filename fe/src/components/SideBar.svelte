@@ -7,7 +7,7 @@
 </style>
 
 <nav
-  class="bg-app-secondary text-white flex flex-col px-2 items-center
+  class="shadow z-10 bg-app-secondary text-white flex flex-col px-2 items-center
   justify-start">
   <div>
     <svg
