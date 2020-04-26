@@ -65,13 +65,3 @@
     </div>
   {/each}
 </div>
-
-<p>--------</p>
-<h3 class="text-lg">All interfaces</h3>
-<p class="text-xs">
-  {JSON.stringify(payload.interfaces.all_interfaces, null, '\t')}
-</p>
-<p>--------</p>
-<h3 class="text-lg">Active interfaces</h3>
-<p class="text-xs">{JSON.stringify(payload.interfaces.active_interfaces)}</p>
-<p>--------</p>
